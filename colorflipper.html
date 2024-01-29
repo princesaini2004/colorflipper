@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color</title>
+    <style>
+        .par {
+            height: 40vh;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            background-color: aqua;
+        }
+
+        .background {
+            height: 50px;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 6vb;
+            color: black;
+
+        }
+
+        .colorchange {
+            height: 30px;
+            width: 90px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="par">
+        <div id="cd" class="background">backgroundcolor: </div><br><br>
+        <button class="colorchange" onclick="colorch()">next</button>
+    </div>
+
+    <script>
+        let body = document.querySelector(".par");
+        let heading = document.querySelector(".background");
+        let btn = document.querySelector(".colorchange");
+
+        const changeColor = () => {
+            let random = Math.floor(Math.random() * 16777215);
+            let randomChange = "#" + random.toString(16);
+            body.style.backgroundColor = randomChange;
+            heading.innerHTML = randomChange;
+            navigator.clipboard.writeText(randomChange)
+
+            console.log(random);
+            console.log(randomChange);
+        }
+
+        heading.addEventListener('click', () => {
+            heading.style.backgroundColor = "blue";
+        })
+
+        btn.addEventListener("click", changeColor);
+        changeColor();
+        function colorch(){
+            document.getElementById('cd').style.backgroundColor="transparent"
+        }
+    </script>
+</body>
+
+</html>
